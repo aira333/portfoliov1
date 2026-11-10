@@ -6,13 +6,17 @@
 <title>Anjali Inturi</title>
 <meta name="description" content="Anjali Saumithri Devi Inturi — software engineer: full-stack apps, data engineering and SQL, teaching.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script>
+(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();
+</script>
 <style>
 :root{
   --bg:#fbfaf7; --surface:#ffffff; --ink:#1c1f1d; --muted:#5d645f; --faint:#8b918c;
   --line:#e4e2dc; --accent:#1f5f4c; --accent-soft:#e6efeb; --warm:#b2562d;
-  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
-  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --serif:Newsreader,"Tiempos Text",Georgia,"Times New Roman",serif;
+  --sans:"DM Sans","Styrene B",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){
@@ -37,9 +41,13 @@ header.top .wrap{display:flex;align-items:center;justify-content:space-between;h
 nav{display:flex;gap:18px;font-size:14px;overflow-x:auto}
 nav a{color:var(--muted)}
 nav a:hover{color:var(--ink)}
+.right{display:flex;align-items:center;gap:18px}
+.theme{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font:500 13px/1 var(--sans);cursor:pointer;flex:0 0 auto}
+.theme:hover{border-color:var(--accent);color:var(--accent)}
+.theme svg{width:15px;height:15px}
 section{padding:64px 0;border-bottom:1px solid var(--line)}
 section:last-of-type{border-bottom:0}
-h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.25;margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.25;margin:0}
 h1{font-size:clamp(32px,5vw,44px);letter-spacing:-.01em}
 h2{font-size:26px;margin-bottom:6px}
 h3{font-size:19px}
@@ -100,6 +108,7 @@ footer{padding:40px 0 60px;color:var(--faint);font-size:13.5px}
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top" style="border:0">Anjali Inturi</a>
+    <div class="right">
     <nav aria-label="Sections">
       <a href="#strengths">Strengths</a>
       <a href="#tira">Tira</a>
@@ -107,6 +116,8 @@ footer{padding:40px 0 60px;color:var(--faint);font-size:13.5px}
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="theme" id="theme" type="button" aria-label="Switch to dark mode"><svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg><span id="theme-label">Dark</span></button>
+    </div>
   </div>
 </header>
 
@@ -288,5 +299,28 @@ footer{padding:40px 0 60px;color:var(--faint);font-size:13.5px}
 <footer><div class="wrap">© 2026 Anjali Saumithri Devi Inturi · Boston, MA</div></footer>
 
 
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme'),
+      icon=document.getElementById('theme-icon'), label=document.getElementById('theme-label'),
+      mq=window.matchMedia('(prefers-color-scheme: dark)');
+  var MOON='<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
+      SUN='<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  function current(){var t=root.getAttribute('data-theme');return t||(mq.matches?'dark':'light')}
+  function paint(){
+    var dark=current()==='dark';
+    icon.innerHTML=dark?SUN:MOON; label.textContent=dark?'Light':'Dark';
+    btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
+  }
+  btn.addEventListener('click',function(){
+    var next=current()==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next)}catch(e){}
+    paint();
+  });
+  mq.addEventListener&&mq.addEventListener('change',function(){if(!root.getAttribute('data-theme'))paint()});
+  paint();
+})();
+</script>
 </body>
 </html>
