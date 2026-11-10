@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anjali Inturi</title>
+<meta name="description" content="Anjali Saumithri Devi Inturi — software engineer: full-stack apps, data engineering and SQL, teaching.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfaf7; --surface:#ffffff; --ink:#1c1f1d; --muted:#5d645f; --faint:#8b918c;
+  --line:#e4e2dc; --accent:#1f5f4c; --accent-soft:#e6efeb; --warm:#b2562d;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141615; --surface:#1b1e1c; --ink:#e9ebe8; --muted:#a6ada8; --faint:#7d847f;
+    --line:#2c302d; --accent:#7cc4a9; --accent-soft:#1f2c27; --warm:#e0895f;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141615; --surface:#1b1e1c; --ink:#e9ebe8; --muted:#a6ada8; --faint:#7d847f;
+  --line:#2c302d; --accent:#7cc4a9; --accent-soft:#1f2c27; --warm:#e0895f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+a:hover{border-bottom-color:currentColor}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
+.brand{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--ink)}
+nav{display:flex;gap:18px;font-size:14px;overflow-x:auto}
+nav a{color:var(--muted)}
+nav a:hover{color:var(--ink)}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.25;margin:0}
+h1{font-size:clamp(32px,5vw,44px);letter-spacing:-.01em}
+h2{font-size:26px;margin-bottom:6px}
+h3{font-size:19px}
+.kicker{font:500 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+.lede{font-size:18px;color:var(--muted);max-width:640px;margin:18px 0 0}
+.sub{color:var(--muted);margin:0 0 28px;max-width:640px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid var(--line);border-radius:6px;font-size:14px;color:var(--ink);background:var(--surface)}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn.primary:hover{color:var(--bg);opacity:.9}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:40px}
+.stat{background:var(--surface);padding:16px}
+.stat b{display:block;font:600 24px/1.1 var(--serif);color:var(--ink)}
+.stat span{font-size:13px;color:var(--muted)}
+.fit{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.fit div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.fit h3{font-size:16px;font-family:var(--sans);margin-bottom:6px}
+.fit p{margin:0;font-size:14.5px;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px}
+.meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline}
+.meta .when{font-size:14px;color:var(--faint);white-space:nowrap}
+.where{color:var(--muted);font-size:14.5px;margin:2px 0 12px}
+ul.points{margin:0;padding-left:18px}
+ul.points li{margin:6px 0}
+ul.points li::marker{color:var(--faint)}
+.num{font-weight:600;color:var(--ink)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{font:12.5px/1 var(--mono);padding:5px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent)}
+.stack{display:grid;gap:18px}
+.shots{display:flex;gap:12px;overflow-x:auto;padding:4px 0 10px;margin:18px 0 6px;scroll-snap-type:x mandatory}
+.shots figure{margin:0;flex:0 0 168px;scroll-snap-align:start}
+.shots img{width:168px;height:auto;border-radius:12px;border:1px solid var(--line);display:block;background:var(--surface)}
+.shots figcaption{font-size:12.5px;color:var(--faint);margin-top:6px;text-align:center}
+.flow{font:13px/1.6 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:14px;overflow-x:auto;color:var(--muted);margin:16px 0 0;white-space:pre}
+.fill{background:#fff3c4;color:#6b4e00;padding:0 3px;border-radius:3px}
+.proj{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.proj .card{padding:18px}
+.proj p{margin:8px 0 0;font-size:14.5px;color:var(--muted)}
+.proj .gh{font-size:13.5px;margin-top:12px;display:inline-block}
+.skills{display:grid;grid-template-columns:160px 1fr;gap:10px 20px;font-size:15px}
+.skills dt{color:var(--faint);font-size:13.5px;padding-top:2px}
+.skills dd{margin:0}
+footer{padding:40px 0 60px;color:var(--faint);font-size:13.5px}
+@media (max-width:680px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .fit,.proj{grid-template-columns:1fr}
+  .skills{grid-template-columns:1fr;gap:2px}
+  .skills dd{margin-bottom:10px}
+  nav{display:none}
+  section{padding:48px 0}
+  .clock{margin-left:0;width:100%}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" style="border:0">Anjali Inturi</a>
+    <nav aria-label="Sections">
+      <a href="#strengths">Strengths</a>
+      <a href="#tira">Tira</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section style="padding-top:72px">
+  <div class="wrap">
+    <div class="kicker">Software engineer · Boston, MA</div>
+    <h1>Anjali Saumithri Devi Inturi</h1>
+    <p class="lede">I build software end to end: clean, accessible interfaces on the front, reliable data and well-written SQL behind them. M.S. Computer Science at Northeastern (Dec 2027), Graduate TA in two AI courses, a software engineering co-op, and two years as a data engineer at Wipro.</p>
+    <div class="links">
+      <a class="btn primary" href="files/Anjali_Inturi_Resume.pdf" download>Download resume</a>
+      <a class="btn" href="files/Anjali_Inturi_CV.pdf" download>Download CV</a>
+      <a class="btn" href="https://github.com/aira333">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/anjali-saumithri-devi-inturi-4223a6290">LinkedIn</a>
+      <a class="btn" href="mailto:inturi.a@northeastern.edu">Email</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>2+ yrs</b><span>industry data engineering (Python, SQL, AWS)</span></div>
+      <div class="stat"><b>14.7k</b><span>lines in Tira, my voice-first phone app</span></div>
+      <div class="stat"><b>2</b><span>graduate AI courses as TA</span></div>
+      <div class="stat"><b>Top 7%</b><span>LeetCode globally · 500+ solved</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="strengths">
+  <div class="wrap">
+    <div class="kicker">What I'm good at</div>
+    <h2>Strengths, with the numbers behind them</h2>
+    <p class="sub">Four things I do well, each backed by work you can check.</p>
+    <div class="fit">
+      <div><h3>Building complete products</h3><p>I designed and built Tira alone, from UI to dialogue engine to database: <b>~14,700 lines</b>, <b>22 automated tests</b>, <b>7 voice features</b>, now being prepared for Google Play.</p></div>
+      <div><h3>Data &amp; SQL</h3><p><b>2+ years</b> at Wipro designing relational schemas, tuning SQL on PostgreSQL and running AWS pipelines. Built a PySpark validation framework with <b>15+ checks</b> that stopped bad data before it reached reports.</p></div>
+      <div><h3>Reliable, tested code</h3><p>On my co-op I worked in a <b>31-intent</b>, <b>~11,800-line</b> Node.js codebase with <b>7 feature test suites</b>, fixing issues each round to get it ready for Alexa certification.</p></div>
+      <div><h3>Explaining things clearly</h3><p>Graduate TA for <b>2 AI courses</b>: I grade <b>80+ students</b> and hold <b>2 office hours a week</b> for students without a CS background. I solve problems fast too: <b>500+ LeetCode</b> problems, <b>top 7%</b> in contests.</p></div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="tira">
+  <div class="wrap">
+    <div class="kicker">Featured project</div>
+    <h2>Tira — a voice-first phone assistant</h2>
+    <p class="sub">An Android/iOS/web app for people who would rather talk than tap, especially low-vision users. "Tira, add an appointment with Dr. Smith tomorrow at 2 PM." I designed and built it end to end, and it's being prepared for Google Play.</p>
+    <div class="card">
+      <ul class="points">
+        <li><span class="num">7 voice capabilities</span>: appointments, a spoken daily briefing, what's next, shopping lists by store, to-dos, ride requests and "repeat that", plus a hands-free wake word.</li>
+        <li><span class="num">~14,700 lines</span> of JavaScript across the app and a <span class="num">dialogue engine</span> (classify → dispatch → multi-turn flows) with chrono-node for natural-language dates, ported from the Alexa skill I worked on as a co-op so it runs entirely on the phone.</li>
+        <li><span class="num">22 automated tests</span> (16 multi-turn conversation scripts, 6 cloud-sync) that run under plain Node, so the engine is checked without a device.</li>
+        <li><span class="num">Accessible by design:</span> Atkinson Hyperlegible type, strong contrast, screen-reader labels on every control, haptic feedback when Tira hears you, adjustable speaking speed.</li>
+        <li><span class="num">Database:</span> Google sign-in and Supabase (PostgreSQL) sync with row-level security, so each customer reads only their own rows. It works offline and syncs later; guest data never leaves the phone.</li>
+      </ul>
+      <div class="shots">
+        <figure><img src="assets/sign-in.png" alt="Tira sign-in screen" loading="lazy"><figcaption>Sign in</figcaption></figure>
+        <figure><img src="assets/talk-home.png" alt="Tira talk screen with greeting and mic" loading="lazy"><figcaption>Talk</figcaption></figure>
+        <figure><img src="assets/talk-briefing.png" alt="Tira spoken daily briefing" loading="lazy"><figcaption>Daily briefing</figcaption></figure>
+        <figure><img src="assets/my-day-appointments.png" alt="My Day appointments screen" loading="lazy"><figcaption>My Day</figcaption></figure>
+        <figure><img src="assets/my-day-lists.png" alt="Shopping and to-do lists" loading="lazy"><figcaption>Lists</figcaption></figure>
+        <figure><img src="assets/settings.png" alt="Settings screen" loading="lazy"><figcaption>Settings</figcaption></figure>
+      </div>
+<div class="flow">speech ─► strip wake word ─► dialogue engine (classify ─► dispatch ─► flows)
+                                    │
+        ┌───────────────────────────┼───────────────────────────┐
+   local store + Postgres sync   notifications            phone dialer
+                                    │
+                    spoken reply ◄── text-to-speech</div>
+      <div class="tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">JavaScript</span><span class="tag">PostgreSQL</span><span class="tag">Supabase</span><span class="tag">Accessibility</span></div>
+      <a class="gh" href="https://github.com/aira333/tira">github.com/aira333/tira →</a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="kicker">Experience</div>
+    <h2>Where I've worked</h2>
+    <p class="sub">Most recent first.</p>
+    <div class="stack">
+
+      <div class="card">
+        <div class="meta"><h3>Software Engineer Intern (Co-op) · USTechBridge</h3><span class="when">Aug 2026 – Dec 2026</span></div>
+        <div class="where">Remote · Alexa skill for visually impaired users</div>
+        <ul class="points">
+          <li>Built features for a voice-first Alexa skill covering appointments, rides, shopping lists and to-dos, in Node.js on AWS Lambda with DynamoDB and AWS CDK.</li>
+          <li>Worked across a <span class="num">31-intent</span> interaction model and an <span class="num">~11,800-line</span> modular codebase, writing voice flows that state dates, times and choices out loud, so users never need a screen.</li>
+          <li>Wrote and maintained tests in a regression suite of <span class="num">7 feature suites</span> plus dialogue, NLU-parity and edge-case runs; fixed what each testing round surfaced to prepare the skill for <span class="num">Alexa certification</span>.</li>
+          <li>Helped keep local-only turns inside a <span class="num">&lt;80 ms</span> warm Lambda budget, with production and staging stacks deployed from the same CDK code.</li>
+          <li>Took the dialogue engine further on my own time and turned it into Tira (above).</li>
+        </ul>
+        <div class="tags"><span class="tag">Node.js</span><span class="tag">AWS Lambda</span><span class="tag">DynamoDB</span><span class="tag">AWS CDK</span><span class="tag">Testing</span></div>
+      </div>
+
+      <div class="card">
+        <div class="meta"><h3>Graduate Teaching Assistant · Khoury College, Northeastern</h3><span class="when">May 2026 – Present</span></div>
+        <div class="where">CS1700 Society of Minds AI (Sep 2026 – now) · CS5047 AI Trends and Tools (May – Aug 2026)</div>
+        <ul class="points">
+          <li>TA for <span class="num">2 courses</span> across <span class="num">2 consecutive terms</span>; grade <span class="num">80+ students'</span> assignments against structured rubrics, re-running each spreadsheet solution to check the scores they report.</li>
+          <li>Graded optimization assignments such as the TA-assignment problem, a constraint-and-scoring model over <span class="num">50+ TAs</span> and course sections.</li>
+          <li>Hold <span class="num">2 office hours a week</span> and answer questions by email and course channels, explaining search, heuristics and optimization to students without a CS background.</li>
+          <li>Write short, specific feedback: what worked, where points were lost and why, so students know exactly what to fix.</li>
+        </ul>
+        <div class="tags"><span class="tag">Rubric grading</span><span class="tag">Office hours</span><span class="tag">Optimization</span><span class="tag">Canvas</span></div>
+      </div>
+
+      <div class="card">
+        <div class="meta"><h3>Data Engineer · Wipro</h3><span class="when">Dec 2024 – Aug 2025</span></div>
+        <div class="where">Hyderabad, India</div>
+        <ul class="points">
+          <li>Designed, built and deployed distributed data pipelines on AWS (S3, Glue, EMR) for structured and semi-structured data.</li>
+          <li>Engineered a configurable PySpark validation framework with <span class="num">15+ rule-based checks</span> (nulls, formats, referential integrity) that caught bad data before it reached reports.</li>
+          <li>Designed relational schemas and optimized SQL on PostgreSQL for analytics and ML consumers; root-caused production data issues.</li>
+          <li>Acted as a point of contact for client and internal stakeholders, turning requirements into documented designs.</li>
+        </ul>
+        <div class="tags"><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">PySpark</span><span class="tag">AWS Glue / EMR</span></div>
+      </div>
+
+      <div class="card">
+        <div class="meta"><h3>Programmer Analyst Trainee · Wipro</h3><span class="when">Jun 2023 – Dec 2024</span></div>
+        <div class="where">Hyderabad, India</div>
+        <ul class="points">
+          <li>Built and maintained ETL/ELT pipelines in Python, PySpark and SQL for transforming and validating relational data at production scale.</li>
+          <li>Learned pipeline design from senior engineers, then resolved recurring issues independently through to closure.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="kicker">More projects</div>
+    <h2>On GitHub</h2>
+    <p class="sub">A selection, with links to the code.</p>
+    <div class="proj">
+      <div class="card"><h3>LangGraph agentic workflow</h3><p>An agent system with self-learning memory. I designed the REST API, the service architecture and PostgreSQL-backed session state.</p><div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">PostgreSQL</span></div><a class="gh" href="https://github.com/aira333/langgraph-agentic-workflow">langgraph-agentic-workflow →</a></div>
+      <div class="card"><h3>Multimodal RAG pipeline</h3><p>Document ingestion and hybrid retrieval (FAISS + BM25) served through FastAPI, with automated tests that check accuracy before deployment.</p><div class="tags"><span class="tag">FastAPI</span><span class="tag">FAISS</span><span class="tag">Pydantic</span></div><a class="gh" href="https://github.com/aira333/multimodalRAGapplication">multimodalRAGapplication →</a></div>
+      <div class="card"><h3>AI music recommendation</h3><p>A recommendation system taken from proposal to a working codebase over five iterations.</p><div class="tags"><span class="tag">Python</span><span class="tag">ML</span></div><a class="gh" href="https://github.com/aira333/ai_music_rec">ai_music_rec →</a></div>
+      <div class="card"><h3>Front-end practice</h3><p>Small HTML/CSS/JavaScript builds: an advice generator that calls a public API, a QR component, plus React and Angular exercises.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a class="gh" href="https://github.com/aira333/advice_generator_app">advice_generator_app →</a> · <a class="gh" href="https://github.com/aira333/react">react →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="kicker">Skills</div>
+    <h2>Toolkit</h2>
+    <p class="sub">&nbsp;</p>
+    <dl class="skills">
+      <dt>Front end</dt><dd>JavaScript, TypeScript, HTML, CSS, SVG, React / React Native, accessible UI</dd>
+      <dt>Visualization</dt><dd>SVG by hand, d3-style data binding, Matplotlib, Seaborn, Power BI</dd>
+      <dt>Databases</dt><dd>SQL, PostgreSQL, schema design, query tuning, DynamoDB, Supabase</dd>
+      <dt>Back end &amp; data</dt><dd>Python, Node.js, FastAPI, Flask, REST APIs, PySpark, ETL/ELT</dd>
+      <dt>Cloud</dt><dd>AWS (Lambda, S3, Glue, EMR, DynamoDB, CDK, Bedrock) · AWS Certified AI Practitioner &amp; Cloud Practitioner</dd>
+      <dt>Practice</dt><dd>Git and pull requests, code review, automated testing, documentation, teaching</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="kicker">Contact</div>
+    <h2>Let's talk</h2>
+    <p class="sub">I'm open to software engineering, full-stack, data engineering and data visualization roles, in Boston or remote. My resume and full CV are below.</p>
+    <div class="links" style="margin-top:0">
+      <a class="btn primary" href="mailto:inturi.a@northeastern.edu">inturi.a@northeastern.edu</a>
+      <a class="btn" href="files/Anjali_Inturi_Resume.pdf" download>Resume (PDF)</a>
+      <a class="btn" href="files/Anjali_Inturi_CV.pdf" download>CV (PDF)</a>
+      <a class="btn" href="tel:+16177510712">(617) 751-0712</a>
+      <a class="btn" href="https://github.com/aira333">github.com/aira333</a>
+      <a class="btn" href="https://linkedin.com/in/anjali-saumithri-devi-inturi-4223a6290">LinkedIn</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© 2026 Anjali Saumithri Devi Inturi · Boston, MA</div></footer>
+
+
+</body>
+</html>
